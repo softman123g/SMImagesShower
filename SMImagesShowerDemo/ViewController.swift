@@ -29,13 +29,13 @@ class ViewController: UIViewController {
             "http://img.taopic.com/uploads/allimg/130501/240451-13050106450911.jpg",
             "http://pic1.nipic.com/2008-08-12/200881211331729_2.jpg",
             "http://a2.att.hudong.com/38/59/300001054794129041591416974.jpg"]
-        let imageShowViewController = SMImageShowerViewController()
+        let imagesShowViewController = SMImagesShowerViewController()
         do {
-            try imageShowViewController.prepareDatas(imageUrls, currentDisplayIndex: 0)
+            try imagesShowViewController.prepareDatas(imageUrls, currentDisplayIndex: 0)
         } catch {
             print("图片显示出错：第一个图片指定索引错误")
             return
         }
-        presentViewController(imageShowViewController, animated: true, completion: nil)
+        presentViewController(imagesShowViewController, animated: true, completion: nil)
     }
 }
