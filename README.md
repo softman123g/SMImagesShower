@@ -1,6 +1,8 @@
 # SMImagesShower
-一个简单的图片显示预览器。
+一个简单的图片显示预览器。使用Swift实现。
+
 A simple images shower。Images shower, pictures shower ...
+Used Swift.
 
 ##Features
 1. 支持横屏竖屏
@@ -15,8 +17,18 @@ A simple images shower。Images shower, pictures shower ...
 
 
 ##How to use?
-1. Copy 'SMImagesShower/' to your projects.
-2. Then add 'SMImagesShower-Bridging-Header.h' to your 'Objective-C Bridging Header' (click TARGETS, then 'Building Settings' --> 'Swift Compiler-Code Generation'--> 'Object-C Bridging Header')
+1. Copy 'SMImagesShower/' to your projects.拷贝'SMImagesShower/'到你的项目中。
+2. Then add 'SMImagesShower-Bridging-Header.h' to your 'Objective-C Bridging Header' (click TARGETS, then 'Building Settings' --> 'Swift Compiler-Code Generation'--> 'Object-C Bridging Header')。
+
+	Or, import 'SMImagesShower-Bridging-Header.h' to your project header file.
+	
+		#import "SupportLib/HUD/MBProgressHUD.h"
+
+	将'SMImagesShower-Bridging-Header.h'添加到你项目的'Objective-C Bridging Header'中（单击项目的TATGETS，选择'Building Settings' --> 'Swift Compiler-Code Generation'--> 'Object-C Bridging Header'）
+	
+	或者，直接将'SMImagesShower-Bridging-Header.h'引入到你自己的头文件中。即在你自己的头文件中，添加如下代码：
+		
+		#import "SupportLib/HUD/MBProgressHUD.h"
 3. Finally.
 
 		let imagesShowerViewController = new SMImagesShowerViewController()
@@ -40,6 +52,7 @@ A simple images shower。Images shower, pictures shower ...
 
 ##About Me
 Contact me: softman123g@126.com
+
 or Star me: https://github.com/softman123g/SMImagesShower
 
 
