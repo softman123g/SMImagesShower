@@ -14,7 +14,7 @@ Used Swift.
 7. 支持单击隐藏图片
 
 效果图：
-
+![ImagesShower](/ImagesShower.gif)
 
 ##How to use?
 1. Copy 'SMImagesShower/' to your projects.拷贝'SMImagesShower/'到你的项目中。
