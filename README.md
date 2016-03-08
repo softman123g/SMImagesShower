@@ -1,12 +1,12 @@
 # SMImagesShower
-一个简单的图片显示预览器。使用Swift实现。
+一个简单的图片显示预览器，图片浏览器，图片显示器，图片预览器。使用Swift实现。
 
-A simple images shower。Images shower, pictures shower ...
+A simple images shower。Images shower, pictures shower, image brower, pictures brower ...
 Used Swift.
 
 ##Features
 1. 支持横屏竖屏
-2. 存储空间小。使用复用ScrollView，当图片很多时，依旧不耗费存储空间
+2. 存储空间小。复用ScrollView，当图片很多时，依旧不耗费存储空间
 3. 支持底部页码显示
 4. 支持双击图片放大/缩小
 5. 支持双指放大/缩小图片
