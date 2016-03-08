@@ -5,6 +5,8 @@
 //  Created by softman on 16/1/25.
 //  Copyright © 2016年 softman. All rights reserved.
 //
+//  Contact me: softman123g@126.com
+//  Or Star me: https://github.com/softman123g/SMImagesShower
 
 import UIKit
 
@@ -15,7 +17,11 @@ class SMImageModel: NSObject {
     
     // MARK: Properties
     
-    private var deviceSize = UIScreen.mainScreen().bounds.size //设备屏幕的大小
+    private var deviceSize:CGSize {//设备屏幕的大小
+        get {
+            return UIScreen.mainScreen().bounds.size
+        }
+    }
     var image:UIImage?//图片信息
     var url:NSURL? //图片地址
     var index:Int = 0 //图片索引

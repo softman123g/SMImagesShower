@@ -5,6 +5,8 @@
 //  Created by softman on 16/1/27.
 //  Copyright © 2016年 softman. All rights reserved.
 //
+//  Contact me: softman123g@126.com
+//  Or Star me: https://github.com/softman123g/SMImagesShower
 
 import UIKit
 

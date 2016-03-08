@@ -5,6 +5,8 @@
 //  Created by softman on 16/1/25.
 //  Copyright © 2016年 softman. All rights reserved.
 //
+//  Contact me: softman123g@126.com
+//  Or Star me: https://github.com/softman123g/SMImagesShower
 
 import UIKit
 
@@ -179,11 +181,11 @@ class SMImageScrollView: UIScrollView, UIScrollViewDelegate, MBProgressHUDDelega
             self.setZoomScale(self.minimumZoomScale, animated: true)
         }
     }
-    
-    func refleshSubview() {  // TODO
+    //在横竖屏切换的时候，重新布局子ScrollView
+    func refleshSubview() {
 //        imageModel?.image = imageModel?.image
-//        let _imageModel = imageModel
-//        imageModel = _imageModel //为了触发set调用
+        let _imageModel = imageModel
+        imageModel = _imageModel //为了触发set调用，重新布局ScrollView
     }
     
     // MARK: Delegate

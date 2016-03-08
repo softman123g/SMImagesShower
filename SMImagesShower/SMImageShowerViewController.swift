@@ -4,15 +4,47 @@
 //
 //  Created by softman on 16/1/25.
 //  Copyright © 2016年 softman. All rights reserved.
+//
+//  Contact me: softman123g@126.com
+//  Or Star me: https://github.com/softman123g/SMImagesShower
+//
 //  原理：
+//  在一个大ScrollView中，嵌入两个小ScrollView，以达到复用的目的。小ScrollView负责从网络加载图片。
+//  并且小ScrollView负责图片的点击放大等的处理，而大ScrollView负责翻页等的效果。
+//
+//  优势：
+//  1.支持横屏竖屏
+//  2.存储空间小。使用复用ScrollView，当图片很多时，依旧不耗费存储空间
+//  3.支持底部页码显示
+//  4.支持双击图片放大/缩小
+//  5.支持双指放大/缩小图片
+//  6.支持长按保存图片到相册
+//  7.支持单击隐藏图片
+//  
+//  使用方法：
+//    let imageUrls = ["http://image.photophoto.cn/m-6/Animal/Amimal%20illustration/0180300271.jpg",
+//    "http://img4.3lian.com/sucai/img6/230/29.jpg",
+//    "http://img.taopic.com/uploads/allimg/130501/240451-13050106450911.jpg",
+//    "http://pic1.nipic.com/2008-08-12/200881211331729_2.jpg",
+//    "http://a2.att.hudong.com/38/59/300001054794129041591416974.jpg"]
+//    let imageShowViewController = SMImageShowerViewController()
+//    do {
+//        try imageShowViewController.prepareDatas(imageUrls, currentDisplayIndex: 0)
+//    } catch {
+//        print("图片显示出错：第一个图片指定索引错误")
+//        return
+//    }
+//    presentViewController(imageShowViewController, animated: true, completion: nil)
+
+
 
 import UIKit
 
-class SMImageShowerViewController: UIViewController, UIScrollViewDelegate, LongPressGestureRecognizerDelegate{
+public class SMImageShowerViewController: UIViewController, UIScrollViewDelegate, LongPressGestureRecognizerDelegate{
+    // MARK: Properties
     private let pageScaleRadio = CGFloat(9.8/10)//页码位置垂直比例
     private let pageLabelHeight = CGFloat(15.0)//页码高度
-    // MARK: Properties
-    
+
     var currentImageIndex:Int = 0 //当前图片索引，从0开始 pre
     var currentPageNumber:Int = 0 //当前页码，从0开始，真正滑动后展现的页码 after
     var prePointX:Float = 0.0 //scrollview 滑过的上一个点x坐标
@@ -25,10 +57,9 @@ class SMImageShowerViewController: UIViewController, UIScrollViewDelegate, LongP
     
     // MARK: Super
     
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.scrollView = UIScrollView(frame: self.view.bounds)
-//        self.scrollView.backgroundColor = UIColor.redColor()
         self.scrollView.backgroundColor = UIColor.blackColor()
         self.scrollView.showsHorizontalScrollIndicator = false
         self.scrollView.showsVerticalScrollIndicator = false
@@ -41,23 +72,21 @@ class SMImageShowerViewController: UIViewController, UIScrollViewDelegate, LongP
         self.pageLabel.textAlignment = .Center
         self.pageLabel.font = UIFont.systemFontOfSize(12)
         self.pageLabel.textColor = UIColor.whiteColor()
-//        self.pageLabel.textColor = UIColor.greenColor()
         self.pageLabel.text = self.pageText()
         self.view.addSubview(self.pageLabel)
         
         self.addGesture()
     }
 
-    override func didReceiveMemoryWarning() {
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
-        return UIInterfaceOrientationMask.Portrait //只允许竖屏
+    override public func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return UIInterfaceOrientationMask.All //支持横竖屏
     }
-    
-    override func viewWillLayoutSubviews() {
+    //第一次调用，以及横竖屏切换的时候，将重新布局
+    override public func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         self.scrollView.frame = self.view.bounds
         var size = self.scrollView.bounds.size
@@ -84,7 +113,7 @@ class SMImageShowerViewController: UIViewController, UIScrollViewDelegate, LongP
     // MARK: Self Functions
     
     //准备数据相关，应该在展现前调用  currentDisplayIndex,从0开始
-    func prepareDatas(imageUrls:[String], currentDisplayIndex:Int) throws {
+    public func prepareDatas(imageUrls:[String], currentDisplayIndex:Int) throws {
         guard currentDisplayIndex >= 0 && currentDisplayIndex < imageUrls.count else {
             throw SMImageShowerError.ArrayOutOfBounds
         }
@@ -183,14 +212,14 @@ class SMImageShowerViewController: UIViewController, UIScrollViewDelegate, LongP
     
     // MARK: Delegate
     //会调用多次
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
         if !self.scrollView.dragging {
             return
         }
         pageDragOperate(scrollView)
     }
     //会调用多次
-    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+    public func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         pageDragOperate(scrollView)
         //将所有的子ScrollView都全部设置成原始的大小。因为可能用户当前界面中的子ScrollView放大了，所以滑动结束后，需要设置回原来的大小。也可以不设置，就看是不是需要这样的设置回原来大小的需求了。
         for imgsc in self.imageScrollViews{
