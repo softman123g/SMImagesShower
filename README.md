@@ -1,7 +1,7 @@
 # SMImagesShower
 一个简单的图片显示预览器，图片浏览器，图片显示器，图片预览器。使用Swift实现。
 
-A simple images shower. Images shower, pictures shower, image brower, pictures brower ...
+A simple images shower. Images shower, pictures shower, images brower, pictures brower, photo shower, photo brower ...
 Used Swift.
 
 ##Features
